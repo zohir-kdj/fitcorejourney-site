@@ -10,7 +10,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-<!-- MailerLite Universal -->
+<!-- MailerLite -->
 <script>
 (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
 .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
@@ -36,7 +36,7 @@ color:#333;
 /* HEADER */
 
 header{
-background:#0f2a3d;
+background:#12344d;
 color:white;
 padding:20px 40px;
 display:flex;
@@ -57,46 +57,53 @@ margin-left:20px;
 font-size:14px;
 }
 
-/* HERO SECTION */
+/* HERO */
 
 .hero{
-
 background:linear-gradient(120deg,#2ecc71,#27ae60);
-
 position:relative;
-
 overflow:hidden;
-
 color:white;
-
-padding:110px 20px;
-
+padding:120px 20px;
 text-align:center;
-
 }
 
-/* FITNESS ICON BACKGROUND */
+/* SVG BACKGROUND */
 
-.hero::before{
-
-content:"💪 🏃 🥗 💪 🏃 🥗 💪 🏃";
-
+.hero-bg{
 position:absolute;
-
-font-size:90px;
-
-opacity:0.15;
-
-top:10%;
-
+top:0;
 left:0;
-
 width:100%;
+height:100%;
+pointer-events:none;
+}
 
-text-align:center;
+/* ICON STYLE */
 
-transform:rotate(-10deg);
+.fitness-icon{
+position:absolute;
+opacity:0.15;
+}
 
+/* ICON POSITIONS */
+
+.icon1{
+width:300px;
+top:10%;
+left:5%;
+}
+
+.icon2{
+width:220px;
+bottom:10%;
+right:8%;
+}
+
+.icon3{
+width:200px;
+top:40%;
+right:40%;
 }
 
 .hero h1{
@@ -112,21 +119,13 @@ position:relative;
 }
 
 .hero-btn{
-
 background:white;
-
 color:#27ae60;
-
 padding:15px 30px;
-
 border-radius:6px;
-
 text-decoration:none;
-
 font-weight:600;
-
 position:relative;
-
 }
 
 /* SECTION */
@@ -140,73 +139,46 @@ padding:60px 20px;
 /* EMAIL BOX */
 
 .email-box{
-
 background:white;
-
 padding:40px;
-
 border-radius:12px;
-
 box-shadow:0 8px 25px rgba(0,0,0,0.08);
-
 text-align:center;
-
 }
 
 /* ARTICLES */
 
 .articles{
-
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
 gap:25px;
-
 margin-top:30px;
-
 }
 
 .article{
-
 background:white;
-
 padding:25px;
-
 border-radius:12px;
-
 box-shadow:0 5px 15px rgba(0,0,0,0.06);
-
 transition:0.3s;
-
 }
 
 .article:hover{
-
 transform:translateY(-6px);
-
 }
 
 /* FOOTER */
 
 footer{
-
-background:#0f2a3d;
-
+background:#12344d;
 color:white;
-
 text-align:center;
-
 padding:30px;
-
 margin-top:60px;
-
 }
 
 footer span{
-
 color:#2ecc71;
-
 }
 
 </style>
@@ -228,6 +200,30 @@ color:#2ecc71;
 </header>
 
 <section class="hero">
+
+<div class="hero-bg">
+
+<!-- CIRCLE FITNESS ICON -->
+
+<svg viewBox="0 0 500 500" class="fitness-icon icon1">
+<circle cx="250" cy="250" r="200" fill="none" stroke="#ffffff" stroke-width="12"/>
+</svg>
+
+<!-- DUMBBELL -->
+
+<svg viewBox="0 0 200 200" class="fitness-icon icon2">
+<rect x="40" y="85" width="120" height="30" fill="#ffffff"/>
+<circle cx="40" cy="100" r="25" fill="#ffffff"/>
+<circle cx="160" cy="100" r="25" fill="#ffffff"/>
+</svg>
+
+<!-- FITNESS STAR -->
+
+<svg viewBox="0 0 200 200" class="fitness-icon icon3">
+<path d="M100 30 L130 70 L110 70 L140 120 L100 90 L60 120 L90 70 L70 70 Z" fill="#ffffff"/>
+</svg>
+
+</div>
 
 <h1>Start Your Fitness Journey Today</h1>
 

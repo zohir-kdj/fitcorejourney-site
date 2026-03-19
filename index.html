@@ -68,8 +68,6 @@ padding:120px 20px;
 text-align:center;
 }
 
-/* SVG BACKGROUND */
-
 .hero-bg{
 position:absolute;
 top:0;
@@ -110,41 +108,46 @@ position:relative;
 
 .hero p{
 font-size:18px;
-margin-bottom:20px;
+margin-bottom:15px;
 position:relative;
 }
 
 /* OFFER TEXT */
 
 .offer{
-color:#eafff3;
+color:#fff8e6;
 font-weight:600;
-margin-bottom:10px;
+margin-bottom:12px;
+font-size:16px;
 }
 
-/* CTA BUTTON (SaaS STYLE) */
+/* CTA BUTTON - ORANGE SaaS */
 
 .cta-button{
 display:inline-flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
-background:linear-gradient(135deg,#2ecc71,#27ae60);
+background:linear-gradient(135deg,#ff7a18,#ffb347);
 color:white;
-padding:16px 28px;
-border-radius:12px;
+padding:16px 30px;
+border-radius:14px;
 text-decoration:none;
 font-weight:600;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
+box-shadow:0 12px 30px rgba(255,122,24,0.4);
 transition:all 0.3s ease;
 position:relative;
 overflow:hidden;
 }
 
+/* HOVER */
+
 .cta-button:hover{
-transform:translateY(-3px) scale(1.03);
-box-shadow:0 15px 35px rgba(0,0,0,0.25);
+transform:translateY(-4px) scale(1.05);
+box-shadow:0 20px 45px rgba(255,122,24,0.6);
 }
+
+/* SHINE EFFECT */
 
 .cta-button::before{
 content:'';
@@ -153,13 +156,15 @@ top:0;
 left:-100%;
 width:100%;
 height:100%;
-background:linear-gradient(120deg,transparent,rgba(255,255,255,0.3),transparent);
+background:linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
 transition:0.5s;
 }
 
 .cta-button:hover::before{
 left:100%;
 }
+
+/* TEXT */
 
 .cta-main{
 font-size:18px;
@@ -175,11 +180,12 @@ gap:8px;
 
 .new-price{
 font-weight:bold;
+color:white;
 }
 
 .old-price{
 text-decoration:line-through;
-color:#dfe6e9;
+color:#ffe0c2;
 }
 
 /* SECTION */
@@ -278,7 +284,7 @@ color:#2ecc71;
 <p class="offer">🔥 Limited Time Offer</p>
 
 <a class="cta-button" href="#free">
-  <span class="cta-main">Get Free Plan</span>
+  <span class="cta-main">Start Free Plan</span>
   <span class="cta-price">
     <span class="new-price">$0</span>
     <span class="old-price">$9.99</span>

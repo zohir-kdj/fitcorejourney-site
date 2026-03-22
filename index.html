@@ -82,23 +82,9 @@ position:absolute;
 opacity:0.15;
 }
 
-.icon1{
-width:300px;
-top:10%;
-left:5%;
-}
-
-.icon2{
-width:220px;
-bottom:10%;
-right:8%;
-}
-
-.icon3{
-width:200px;
-top:40%;
-right:40%;
-}
+.icon1{ width:300px; top:10%; left:5%; }
+.icon2{ width:220px; bottom:10%; right:8%; }
+.icon3{ width:200px; top:40%; right:40%; }
 
 .hero h1{
 font-size:42px;
@@ -112,16 +98,32 @@ margin-bottom:15px;
 position:relative;
 }
 
-/* OFFER TEXT */
+/* OFFER BOX */
+
+.offer-box{
+margin:20px 0;
+}
 
 .offer{
 color:#fff8e6;
 font-weight:600;
-margin-bottom:12px;
-font-size:16px;
+margin-bottom:10px;
 }
 
-/* CTA BUTTON - ORANGE SaaS */
+/* COUNTDOWN */
+
+#countdown{
+font-size:20px;
+font-weight:600;
+background:rgba(0,0,0,0.25);
+display:inline-block;
+padding:10px 18px;
+border-radius:10px;
+margin-bottom:10px;
+letter-spacing:1px;
+}
+
+/* CTA BUTTON */
 
 .cta-button{
 display:inline-flex;
@@ -140,14 +142,10 @@ position:relative;
 overflow:hidden;
 }
 
-/* HOVER */
-
 .cta-button:hover{
 transform:translateY(-4px) scale(1.05);
 box-shadow:0 20px 45px rgba(255,122,24,0.6);
 }
-
-/* SHINE EFFECT */
 
 .cta-button::before{
 content:'';
@@ -164,8 +162,6 @@ transition:0.5s;
 left:100%;
 }
 
-/* TEXT */
-
 .cta-main{
 font-size:18px;
 margin-bottom:4px;
@@ -174,13 +170,11 @@ margin-bottom:4px;
 .cta-price{
 font-size:14px;
 display:flex;
-align-items:center;
 gap:8px;
 }
 
 .new-price{
 font-weight:bold;
-color:white;
 }
 
 .old-price{
@@ -249,7 +243,6 @@ color:#2ecc71;
 
 <header>
 <div class="logo">FitCoreJourney</div>
-
 <nav>
 <a href="#">Home</a>
 <a href="#articles">Articles</a>
@@ -281,14 +274,17 @@ color:#2ecc71;
 
 <p>Simple home workouts and fitness tips to help you lose weight and stay healthy.</p>
 
+<div class="offer-box">
 <p class="offer">🔥 Limited Time Offer</p>
+<div id="countdown">Loading...</div>
+</div>
 
 <a class="cta-button" href="#free">
-  <span class="cta-main">Start Free Plan</span>
-  <span class="cta-price">
-    <span class="new-price">$0</span>
-    <span class="old-price">$9.99</span>
-  </span>
+<span class="cta-main">Start Free Plan</span>
+<span class="cta-price">
+<span class="new-price">$0</span>
+<span class="old-price">$9.99</span>
+</span>
 </a>
 
 </section>
@@ -335,6 +331,30 @@ color:#2ecc71;
 <footer>
 <p>© 2026 <span>FitCoreJourney</span> — Your Fitness Starts Here</p>
 </footer>
+
+<!-- COUNTDOWN SCRIPT -->
+<script>
+
+function updateCountdown(){
+
+let now = new Date();
+let end = new Date();
+end.setHours(24,0,0,0);
+
+let diff = end - now;
+
+let h = Math.floor(diff / (1000 * 60 * 60));
+let m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+let s = Math.floor((diff % (1000 * 60)) / 1000);
+
+document.getElementById("countdown").innerHTML =
+h + "h : " + m + "m : " + s + "s";
+
+}
+
+setInterval(updateCountdown,1000);
+
+</script>
 
 </body>
 </html>

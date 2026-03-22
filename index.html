@@ -21,11 +21,7 @@ ml('account', '2179007');
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
 font-family:'Poppins',sans-serif;
@@ -42,6 +38,7 @@ padding:20px 40px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+position:relative;
 }
 
 .logo{
@@ -50,11 +47,54 @@ font-weight:600;
 color:#2ecc71;
 }
 
-nav a{
+/* MENU BUTTON */
+
+.menu-btn{
+font-size:22px;
+cursor:pointer;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+position:fixed;
+top:0;
+left:-260px;
+width:260px;
+height:100%;
+background:#12344d;
+padding:30px 20px;
+transition:0.3s;
+z-index:1000;
+}
+
+.sidebar.active{
+left:0;
+}
+
+.sidebar a{
+display:block;
 color:white;
 text-decoration:none;
-margin-left:20px;
-font-size:14px;
+margin:15px 0;
+font-size:16px;
+}
+
+/* OVERLAY */
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.4);
+display:none;
+z-index:999;
+}
+
+.overlay.active{
+display:block;
 }
 
 /* HERO */
@@ -89,28 +129,22 @@ opacity:0.15;
 .hero h1{
 font-size:42px;
 margin-bottom:15px;
-position:relative;
 }
 
 .hero p{
 font-size:18px;
 margin-bottom:15px;
-position:relative;
 }
 
-/* OFFER BOX */
+/* OFFER */
 
-.offer-box{
-margin:20px 0;
-}
+.offer-box{margin:20px 0;}
 
 .offer{
 color:#fff8e6;
 font-weight:600;
 margin-bottom:10px;
 }
-
-/* COUNTDOWN */
 
 #countdown{
 font-size:20px;
@@ -119,8 +153,6 @@ background:rgba(0,0,0,0.25);
 display:inline-block;
 padding:10px 18px;
 border-radius:10px;
-margin-bottom:10px;
-letter-spacing:1px;
 }
 
 /* CTA BUTTON */
@@ -137,60 +169,26 @@ border-radius:14px;
 text-decoration:none;
 font-weight:600;
 box-shadow:0 12px 30px rgba(255,122,24,0.4);
-transition:all 0.3s ease;
-position:relative;
-overflow:hidden;
+transition:0.3s;
 }
 
 .cta-button:hover{
 transform:translateY(-4px) scale(1.05);
-box-shadow:0 20px 45px rgba(255,122,24,0.6);
 }
 
-.cta-button::before{
-content:'';
-position:absolute;
-top:0;
-left:-100%;
-width:100%;
-height:100%;
-background:linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
-transition:0.5s;
-}
+.cta-main{font-size:18px;margin-bottom:4px;}
 
-.cta-button:hover::before{
-left:100%;
-}
+.cta-price{font-size:14px;display:flex;gap:8px;}
 
-.cta-main{
-font-size:18px;
-margin-bottom:4px;
-}
+.old-price{text-decoration:line-through;color:#ffe0c2;}
 
-.cta-price{
-font-size:14px;
-display:flex;
-gap:8px;
-}
-
-.new-price{
-font-weight:bold;
-}
-
-.old-price{
-text-decoration:line-through;
-color:#ffe0c2;
-}
-
-/* SECTION */
+/* SECTIONS */
 
 .section{
 max-width:1100px;
 margin:auto;
 padding:60px 20px;
 }
-
-/* EMAIL BOX */
 
 .email-box{
 background:white;
@@ -199,8 +197,6 @@ border-radius:12px;
 box-shadow:0 8px 25px rgba(0,0,0,0.08);
 text-align:center;
 }
-
-/* ARTICLES */
 
 .articles{
 display:grid;
@@ -214,11 +210,6 @@ background:white;
 padding:25px;
 border-radius:12px;
 box-shadow:0 5px 15px rgba(0,0,0,0.06);
-transition:0.3s;
-}
-
-.article:hover{
-transform:translateY(-6px);
 }
 
 /* FOOTER */
@@ -231,9 +222,7 @@ padding:30px;
 margin-top:60px;
 }
 
-footer span{
-color:#2ecc71;
-}
+footer span{color:#2ecc71;}
 
 </style>
 
@@ -241,19 +230,28 @@ color:#2ecc71;
 
 <body>
 
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+<a href="privacy.html">Privacy Policy</a>
+<a href="terms.html">Terms of Service</a>
+<a href="disclaimer.html">Disclaimer</a>
+<a href="about.html">About Us</a>
+<a href="contact.html">Contact</a>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
 <header>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
 <div class="logo">FitCoreJourney</div>
-<nav>
-<a href="#">Home</a>
-<a href="#articles">Articles</a>
-<a href="#free">Free Plan</a>
-</nav>
+
 </header>
 
 <section class="hero">
 
 <div class="hero-bg">
-
 <svg viewBox="0 0 500 500" class="fitness-icon icon1">
 <circle cx="250" cy="250" r="200" fill="none" stroke="#ffffff" stroke-width="12"/>
 </svg>
@@ -263,11 +261,6 @@ color:#2ecc71;
 <circle cx="40" cy="100" r="25" fill="#ffffff"/>
 <circle cx="160" cy="100" r="25" fill="#ffffff"/>
 </svg>
-
-<svg viewBox="0 0 200 200" class="fitness-icon icon3">
-<path d="M100 30 L130 70 L110 70 L140 120 L100 90 L60 120 L90 70 L70 70 Z" fill="#ffffff"/>
-</svg>
-
 </div>
 
 <h1>Start Your Fitness Journey Today</h1>
@@ -282,7 +275,7 @@ color:#2ecc71;
 <a class="cta-button" href="#free">
 <span class="cta-main">Start Free Plan</span>
 <span class="cta-price">
-<span class="new-price">$0</span>
+<span>$0</span>
 <span class="old-price">$9.99</span>
 </span>
 </a>
@@ -292,13 +285,9 @@ color:#2ecc71;
 <section id="free" class="section">
 
 <div class="email-box">
-
 <h2>Get Your Free 3-Day Workout Plan</h2>
-
 <p>Enter your email and receive a beginner home workout plan.</p>
-
 <div class="ml-embedded" data-form="ssLTmw"></div>
-
 </div>
 
 </section>
@@ -329,30 +318,42 @@ color:#2ecc71;
 </section>
 
 <footer>
-<p>© 2026 <span>FitCoreJourney</span> — Your Fitness Starts Here</p>
+<p>© 2026 <span>FitCoreJourney</span></p>
 </footer>
 
-<!-- COUNTDOWN SCRIPT -->
+<!-- JS -->
+
 <script>
 
-function updateCountdown(){
+/* COUNTDOWN */
 
+function updateCountdown(){
 let now = new Date();
 let end = new Date();
 end.setHours(24,0,0,0);
 
 let diff = end - now;
 
-let h = Math.floor(diff / (1000 * 60 * 60));
-let m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-let s = Math.floor((diff % (1000 * 60)) / 1000);
+let h = Math.floor(diff / (1000*60*60));
+let m = Math.floor((diff % (1000*60*60))/(1000*60));
+let s = Math.floor((diff % (1000*60))/1000);
 
 document.getElementById("countdown").innerHTML =
-h + "h : " + m + "m : " + s + "s";
-
+h+"h : "+m+"m : "+s+"s";
 }
 
 setInterval(updateCountdown,1000);
+
+/* MENU */
+
+function toggleMenu(){
+document.getElementById("sidebar").classList.toggle("active");
+document.getElementById("overlay").classList.toggle("active");
+}
+
+document.getElementById("overlay").onclick = function(){
+toggleMenu();
+}
 
 </script>
 
